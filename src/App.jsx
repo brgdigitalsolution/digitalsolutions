@@ -476,7 +476,7 @@ function Nav({ page, setPage, dark, setDark, onSelectService }) {
                 <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[560px] rounded-xl shadow-2xl p-6 grid grid-cols-2 gap-2"
                   style={{ backgroundColor: C.white }}>
                   {SERVICES.map((s) => (
-                    <button key={s.id} onClick={() => goToService(s.id)} className="flex items-start gap-3 p-3 rounded-lg text-left hover:bg-gray-50">
+                    <button key={s.id} onClick={() => goToService(s.id)} className="flex items-start gap-3 p-3 rounded-lg text-left hover:opacity-80 transition-opacity">
                       <s.icon size={18} style={{ color: C.blue, marginTop: 2 }} />
                       <div>
                         <div className="text-sm font-semibold" style={{ ...bodyFont, color: C.heading }}>{s.name}</div>
@@ -787,7 +787,7 @@ function HomePage({ setPage, onSelectService }) {
             <div className="rounded-2xl p-8" style={{ backgroundColor: C.gray }}>
               <div className="grid grid-cols-2 gap-5">
                 {[["95+","PageSpeed Score"],["24/7","Uptime Monitoring"],["3–5wk","Avg. Launch Time"],["100%","Mobile Responsive"]].map(([n,l],i) => (
-                  <div key={i} className="bg-white rounded-xl p-5 shadow-sm">
+                  <div key={i} className="bg-white rounded-xl p-5 shadow-sm" style={{ backgroundColor: C.white }}>
                     <div className="text-2xl font-bold" style={{ ...displayFont, color: C.blue }}>{n}</div>
                     <div className="text-xs mt-1" style={{ ...bodyFont, color: C.inkSoft }}>{l}</div>
                   </div>
@@ -804,7 +804,7 @@ function HomePage({ setPage, onSelectService }) {
         <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {SERVICES.map((s, i) => (
             <Reveal key={s.id}>
-              <button onClick={() => go("services")} className="text-left w-full h-full bg-white rounded-xl p-6 shadow-sm hover:shadow-xl transition-shadow flex flex-col">
+              <button onClick={() => go("services")} className="text-left w-full h-full bg-white rounded-xl p-6 shadow-sm hover:shadow-xl transition-shadow flex flex-col" style={{ backgroundColor: C.white }}>
                 <div className="w-11 h-11 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: C.blueSoft }}><s.icon size={20} style={{ color: C.blue }} /></div>
                 <div className="font-semibold text-sm" style={{ ...displayFont, color: C.heading }}>{s.name}</div>
                 <div className="text-xs mt-2 leading-relaxed flex-1" style={{ ...bodyFont, color: C.inkSoft }}>{s.short}</div>
@@ -848,7 +848,7 @@ function HomePage({ setPage, onSelectService }) {
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
           {PORTFOLIO.filter((p) => filter === "All" || p.cat === filter).map((p) => (
             <Reveal key={p.id}>
-              <div className="bg-white rounded-xl p-7 shadow-sm hover:shadow-xl transition-shadow h-full flex flex-col">
+              <div className="bg-white rounded-xl p-7 shadow-sm hover:shadow-xl transition-shadow h-full flex flex-col" style={{ backgroundColor: C.white }}>
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{ backgroundColor: C.blueSoft, color: C.blue, ...bodyFont }}>{p.cat}</span>
                   {p.url && (
@@ -918,7 +918,7 @@ function HomePage({ setPage, onSelectService }) {
       {/* QUOTE ESTIMATOR */}
       <section className="py-24 px-6 md:px-10" style={{ backgroundColor: C.gray }}>
         <SectionTitle eyebrow="Pricing" title="Get an instant ballpark estimate" sub="A quick starting point — every quote is refined after a short discovery call." />
-        <div className="max-w-2xl mx-auto bg-white rounded-2xl p-8 shadow-sm">
+        <div className="max-w-2xl mx-auto bg-white rounded-2xl p-8 shadow-sm" style={{ backgroundColor: C.white }}>
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-2"><Calculator size={18} style={{ color: C.blue }} /><span className="text-sm font-semibold" style={{ ...bodyFont, color: C.heading }}>Quote Estimator</span></div>
             <select value={calc.currency} onChange={(e) => { userChangedCurrency.current = true; setCalc({ ...calc, currency: e.target.value }); }} aria-label="Currency"
@@ -983,7 +983,7 @@ function HomePage({ setPage, onSelectService }) {
         <SectionTitle eyebrow="Questions" title="Frequently asked questions" />
         <div className="max-w-2xl mx-auto flex flex-col gap-3">
           {FAQS.map((f, i) => (
-            <div key={i} className="bg-white rounded-xl overflow-hidden">
+            <div key={i} className="bg-white rounded-xl overflow-hidden" style={{ backgroundColor: C.white }}>
               <button onClick={() => setActiveFaq(activeFaq === i ? -1 : i)} className="w-full flex items-center justify-between px-6 py-5 text-left">
                 <span className="text-sm font-semibold" style={{ ...bodyFont, color: C.heading }}>{f.q}</span>
                 <ChevronDown size={16} style={{ color: C.blue, transform: activeFaq === i ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
@@ -1051,15 +1051,15 @@ function ServicesPage({ setPage, initialServiceId }) {
             <p className="mt-3 text-base leading-relaxed max-w-xl" style={{ ...bodyFont, color: C.inkSoft }}>{svc.short}</p>
             <div className="grid sm:grid-cols-2 gap-3 mt-8">
               {svc.items.map((it, i) => (
-                <div key={i} className="flex items-center gap-2 bg-white rounded-lg px-4 py-3">
+                <div key={i} className="flex items-center gap-2 bg-white rounded-lg px-4 py-3" style={{ backgroundColor: C.white }}>
                   <Check size={15} style={{ color: C.emeraldDeep }} />
                   <span className="text-sm font-medium" style={{ ...bodyFont, color: C.heading }}>{it}</span>
                 </div>
               ))}
             </div>
             <div className="mt-8 flex gap-3 flex-wrap">
-              <div className="bg-white rounded-lg px-4 py-3 flex-1 min-w-[140px]"><div className="text-xs" style={{...bodyFont,color:C.inkSoft}}>Typical Timeline</div><div className="text-sm font-semibold mt-1" style={{...bodyFont,color:C.heading}}>3–6 weeks</div></div>
-              <div className="bg-white rounded-lg px-4 py-3 flex-1 min-w-[140px]"><div className="text-xs" style={{...bodyFont,color:C.inkSoft}}>Starting From</div><div className="text-sm font-semibold mt-1" style={{...bodyFont,color:C.heading}}>₹6,000</div></div>
+              <div className="bg-white rounded-lg px-4 py-3 flex-1 min-w-[140px]" style={{ backgroundColor: C.white }}><div className="text-xs" style={{...bodyFont,color:C.inkSoft}}>Typical Timeline</div><div className="text-sm font-semibold mt-1" style={{...bodyFont,color:C.heading}}>3–6 weeks</div></div>
+              <div className="bg-white rounded-lg px-4 py-3 flex-1 min-w-[140px]" style={{ backgroundColor: C.white }}><div className="text-xs" style={{...bodyFont,color:C.inkSoft}}>Starting From</div><div className="text-sm font-semibold mt-1" style={{...bodyFont,color:C.heading}}>₹6,000</div></div>
             </div>
             <div className="mt-8"><Button onClick={() => setPage("contact")}>Get a Custom Quote</Button></div>
           </div>
@@ -1368,7 +1368,7 @@ function RequestCallWidget({ setPage }) {
             </span>
           </label>
           {error && (
-            <div className="text-[11px] rounded-lg px-3 py-2" style={{ ...bodyFont, backgroundColor: "#FEF2F2", color: "#B91C1C" }}>
+            <div className="text-[11px] rounded-lg px-3 py-2" style={{ ...bodyFont, backgroundColor: "rgba(220,38,38,0.12)", color: "#EF4444" }}>
               {error === "rate_limited" ? "Too many requests — please try again shortly." : "Something went wrong — please try again."}
             </div>
           )}
@@ -1587,7 +1587,7 @@ function ContactPage({ setPage }) {
                   <span>Send me occasional updates and offers from BRG Digital Solutions.</span>
                 </label>
                 {error && (
-                  <div className="text-sm rounded-lg px-4 py-3" style={{ ...bodyFont, backgroundColor: "#FEF2F2", color: "#B91C1C" }}>
+                  <div className="text-sm rounded-lg px-4 py-3" style={{ ...bodyFont, backgroundColor: "rgba(220,38,38,0.12)", color: "#EF4444" }}>
                     {error === "rate_limited" ? (
                       "Too many submissions from this connection — please wait a bit and try again, or reach us directly on "
                     ) : (
@@ -1843,7 +1843,7 @@ function CareersPage({ setPage }) {
                         </span>
                       </label>
                       {error && (
-                        <div className="text-xs rounded-lg px-4 py-2.5" style={{ ...bodyFont, backgroundColor: "#FEF2F2", color: "#B91C1C" }}>
+                        <div className="text-xs rounded-lg px-4 py-2.5" style={{ ...bodyFont, backgroundColor: "rgba(220,38,38,0.12)", color: "#EF4444" }}>
                           {error === "rate_limited" ? "Too many submissions from this connection — please wait a bit and try again, or email " : "Something went wrong — please try again or email "}
                           <a href="mailto:brgdigitalsolutions@gmail.com" style={{ fontWeight: 600, textDecoration: "underline" }}>brgdigitalsolutions@gmail.com</a> directly.
                         </div>
