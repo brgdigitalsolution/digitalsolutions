@@ -1,0 +1,26 @@
+<!doctype html>
+<!--
+  GitHub Pages serves this file for any path it doesn't recognize as a static
+  asset — which, with path-based routing, means every deep link (e.g. a direct
+  visit to /services or a shared link). This redirects to index.html while
+  preserving the intended path in the query string; index.html's inline script
+  decodes it and restores the real URL via history.replaceState before React
+  mounts, so routing and the browser's back/forward button still work.
+
+  Standard pattern: https://github.com/rafgraph/spa-github-pages
+  Skip this file entirely if you deploy via the Cloudflare Worker instead —
+  add an equivalent fallback there (serve index.html for any non-/api/* path).
+-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>BRG Digital Solutions</title>
+    <script>
+      var path = window.location.pathname + window.location.search + window.location.hash;
+      window.location.replace(
+        window.location.origin + "/?redirect=" + encodeURIComponent(path)
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

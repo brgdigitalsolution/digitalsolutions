@@ -1,0 +1,19 @@
+name = "brgdigital-api"
+main = "index.js"
+compatibility_date = "2026-01-01"
+
+routes = [
+  { pattern = "brgdigitalsolutions.com/api/*", zone_name = "brgdigitalsolutions.com" }
+]
+
+# Rate limiting storage — run `wrangler kv:namespace create RATE_LIMIT_KV` and
+# paste the returned id below. Endpoints fail OPEN (no limit enforced) until
+# this binding exists, so nothing breaks before you've set it up.
+kv_namespaces = [
+  { binding = "RATE_LIMIT_KV", id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID" }
+]
+
+# After first deploy, add secrets:
+#   wrangler secret put ANTHROPIC_API_KEY
+#   wrangler secret put RESEND_API_KEY
+#   wrangler secret put RECAPTCHA_SECRET_KEY   (optional — forms work without it, just unverified)

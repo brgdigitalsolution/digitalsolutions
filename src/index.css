@@ -1,0 +1,15 @@
+/* Fonts are loaded via <link> in index.html — not @import here, which would be
+   a second, render-blocking request for the same stylesheet. */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}

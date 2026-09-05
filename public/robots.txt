@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://brgdigitalsolutions.com/sitemap.xml
