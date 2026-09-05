@@ -153,10 +153,10 @@ const CURRENCY_RATES = { INR: 1, USD: 0.012, GBP: 0.0095, EUR: 0.011, CAD: 0.016
 const CURRENCY_SYMBOLS = { INR: "₹", USD: "$", GBP: "£", EUR: "€", CAD: "$", AUD: "$", AED: "د.إ", SGD: "$" };
 
 const TEAM = [
-  { name: "Aditya Rana", role: "Founder & Lead Developer", dept: "Leadership" },
-  { name: "Priya Nair", role: "SEO & Growth Lead", dept: "Marketing" },
-  { name: "Karan Mehta", role: "Frontend Developer", dept: "Engineering" },
-  { name: "Simran Kaur", role: "Project Coordinator", dept: "Client Success" },
+  { name: "Ravi Shankar Kumar", role: "Founder & Lead Developer", dept: "Leadership" },
+  { name: "Shashi Shankar Jha", role: "SEO & Growth Lead", dept: "Marketing" },
+  { name: "Jatin Thakur", role: "Frontend Developer", dept: "Engineering" },
+  { name: "Prisha Jha", role: "Project Coordinator", dept: "Client Success" },
 ];
 
 // Placeholder industry badges, not real client names/logos — swap for actual
@@ -529,8 +529,8 @@ function Footer({ setPage }) {
           </div>
           <p className="text-sm leading-relaxed" style={{ ...bodyFont, color: "rgba(255,255,255,0.55)" }}>Transforming Ideas into Digital Success — websites, apps and growth systems for ambitious businesses.</p>
           <div className="flex gap-3 mt-5">
-            {[Facebook, Instagram, Linkedin, Twitter].map((I, i) => (
-              <div key={i} className="w-9 h-9 rounded-full flex items-center justify-center cursor-pointer" style={{ backgroundColor: "rgba(255,255,255,0.06)" }}><I size={15} color="#fff" /></div>
+            {[[Facebook, "#1877F2"], [Instagram, "#E1306C"], [Linkedin, "#0A66C2"], [Twitter, "#1DA1F2"]].map(([I, brandColor], i) => (
+              <div key={i} className="w-9 h-9 rounded-full flex items-center justify-center cursor-pointer transition-transform hover:scale-110" style={{ backgroundColor: brandColor }}><I size={15} color="#fff" /></div>
             ))}
           </div>
         </div>
@@ -1250,7 +1250,7 @@ function AboutPage({ setPage }) {
           {TEAM.map((t, i) => (
             <div key={i} className="text-center">
               <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto text-lg font-bold" style={{ background: `linear-gradient(135deg, ${C.blueBg}, ${C.indigo})`, color: "#fff", ...displayFont }}>
-                {t.name.split(" ").map((n) => n[0]).join("")}
+                {(() => { const parts = t.name.split(" "); return parts.length > 1 ? parts[0][0] + parts[parts.length - 1][0] : parts[0][0]; })()}
               </div>
               <div className="font-semibold text-sm mt-3" style={{ ...displayFont, color: C.heading }}>{t.name}</div>
               <div className="text-xs mt-1" style={{ ...bodyFont, color: C.inkSoft }}>{t.role}</div>
