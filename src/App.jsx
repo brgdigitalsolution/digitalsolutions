@@ -455,7 +455,7 @@ function Nav({ page, setPage, dark, setDark, onSelectService }) {
   const go = (id) => { setPage(id); setOpen(false); window.scrollTo(0, 0); };
   const goToService = (serviceId) => { onSelectService(serviceId); go("services"); setMega(false); };
   return (
-    <div className="sticky top-0 z-50" style={{ backgroundColor: scrolled ? "rgba(11,21,38,0.92)" : "transparent", backdropFilter: scrolled ? "blur(10px)" : "none", transition: "all 0.3s ease", borderBottom: scrolled ? `1px solid rgba(255,255,255,0.08)` : "1px solid transparent" }}>
+    <div className="sticky top-0 z-50" style={{ backgroundColor: scrolled ? "rgba(11,21,38,0.92)" : C.navy, backdropFilter: scrolled ? "blur(10px)" : "none", transition: "all 0.3s ease", borderBottom: scrolled ? `1px solid rgba(255,255,255,0.08)` : "1px solid transparent" }}>
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between h-20">
         <button onClick={() => go("home")} className="flex items-center gap-2">
           <div className="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-sm" style={{ backgroundColor: C.blueBg, color: "#fff", ...displayFont }}>BD</div>
