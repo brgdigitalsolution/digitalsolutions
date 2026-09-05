@@ -1,177 +1,26 @@
 <!doctype html>
-<html lang="en">
+<!--
+  GitHub Pages serves this file for any path it doesn't recognize as a static
+  asset — which, with path-based routing, means every deep link (e.g. a direct
+  visit to /services or a shared link). This redirects to index.html while
+  preserving the intended path in the query string; index.html's inline script
+  decodes it and restores the real URL via history.replaceState before React
+  mounts, so routing and the browser's back/forward button still work.
+
+  Standard pattern: https://github.com/rafgraph/spa-github-pages
+  Skip this file entirely if you deploy via the Cloudflare Worker instead —
+  add an equivalent fallback there (serve index.html for any non-/api/* path).
+-->
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BRG Digital Solutions | Website & App Development, SEO, Digital Marketing</title>
-    <meta name="description" content="BRG Digital Solutions builds websites, mobile apps, SEO and digital marketing systems for startups, SMEs and enterprises across the USA, Australia, Europe, UAE, UK, Canada, Singapore and India." />
-    <link rel="canonical" href="https://brgdigitalsolutions.in/" />
-    <!-- Per-route title/description/canonical/OG are updated at runtime by applyPageMeta()
-         in App.jsx for any client that executes JS. These tags are the defaults seen by
-         clients that don't (see the <noscript> block below for their actual content). -->
-
-    <!-- hreflang: this is the home-page's cluster (itself + all country landing pages) —
-         see setHreflangTags() in App.jsx, which swaps this set at runtime per page.
-         Kept here statically too so non-JS clients see a correct set on first paint.
-         Europe uses the UN M49 region code "150" (no single ISO country code exists
-         for "Europe") — this is valid per Google's hreflang implementation. -->
-    <link rel="alternate" hreflang="x-default" href="https://brgdigitalsolutions.in/" />
-    <link rel="alternate" hreflang="en-in" href="https://brgdigitalsolutions.in/" />
-    <link rel="alternate" hreflang="en-us" href="https://brgdigitalsolutions.in/websites-for/usa" />
-    <link rel="alternate" hreflang="en-au" href="https://brgdigitalsolutions.in/websites-for/australia" />
-    <link rel="alternate" hreflang="en-150" href="https://brgdigitalsolutions.in/websites-for/europe" />
-    <link rel="alternate" hreflang="en-ae" href="https://brgdigitalsolutions.in/websites-for/uae" />
-    <link rel="alternate" hreflang="en-gb" href="https://brgdigitalsolutions.in/websites-for/uk" />
-    <link rel="alternate" hreflang="en-ca" href="https://brgdigitalsolutions.in/websites-for/canada" />
-    <link rel="alternate" hreflang="en-sg" href="https://brgdigitalsolutions.in/websites-for/singapore" />
-
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
-    <meta name="theme-color" content="#140A24" />
-
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="BRG Digital Solutions | Transforming Ideas into Digital Success" />
-    <meta property="og:description" content="Websites, apps, SEO and digital marketing for businesses that need a digital presence they can trust." />
-    <meta property="og:url" content="https://brgdigitalsolutions.in/" />
-    <meta property="og:image" content="https://brgdigitalsolutions.in/icon-512.png" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="BRG Digital Solutions" />
-    <meta name="twitter:description" content="Transforming Ideas into Digital Success." />
-
-    <!-- Single font-loading path (a <link>, not @import — @import is render-blocking
-         and was previously duplicated in src/index.css too, costing an extra request). -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" />
-
-    <!-- Google Analytics 4 — replace G-XXXXXXXXXX with your real Measurement ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <meta charset="utf-8" />
+    <title>BRG Digital Solutions</title>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
-
-    <!-- reCAPTCHA v3 — replace YOUR_RECAPTCHA_V3_SITE_KEY with your real site key
-         (must match RECAPTCHA_SITE_KEY in src/App.jsx and RECAPTCHA_SECRET_KEY in the worker) -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6Ld4naktAAAAAI8bSIVOZ4nmlG9zvgDO_LFxUMm1"></script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "BRG Digital Solutions",
-      "image": "https://brgdigitalsolutions.in/icon-512.png",
-      "telephone": "+91-9811419910",
-      "email": "brgdigitalsolutions@gmail.com",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "B-158/159 Sainik Nagar",
-        "addressLocality": "New Delhi",
-        "postalCode": "110059",
-        "addressCountry": "IN"
-      },
-      "url": "https://brgdigitalsolutions.in/",
-      "priceRange": "₹₹",
-      "areaServed": [
-        { "@type": "Country", "name": "United States" },
-        { "@type": "Country", "name": "Australia" },
-        { "@type": "Place", "name": "Europe" },
-        { "@type": "Country", "name": "United Arab Emirates" },
-        { "@type": "Country", "name": "United Kingdom" },
-        { "@type": "Country", "name": "Canada" },
-        { "@type": "Country", "name": "Singapore" },
-        { "@type": "Country", "name": "India" }
-      ]
-    }
-    </script>
-
-    <!-- FAQPage schema — mirrors the FAQS array in src/App.jsx. If you edit the FAQs
-         in the app, update this block to match (it's static, not generated). -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How long does a typical website project take?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Most business or corporate websites take 3–5 weeks from kickoff to launch. Ecommerce platforms and custom web applications typically take 6–10 weeks depending on scope." }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you offer ongoing maintenance after launch?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We offer AMC (Annual Maintenance Contract) plans covering updates, security patches, hosting management, and small content changes." }
-        },
-        {
-          "@type": "Question",
-          "name": "Can you work with businesses outside India?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — most of our clients are outside India. We actively serve businesses across the USA, Australia, Europe, UAE, UK, Canada and Singapore, with all communication and project management handled remotely." }
-        },
-        {
-          "@type": "Question",
-          "name": "What platforms do you build on?",
-          "acceptedAnswer": { "@type": "Answer", "text": "We choose the right stack per project — from static sites on Cloudflare for speed, to React and Node.js applications, to Flutter for cross-platform mobile apps." }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you help with SEO after the website is live?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. SEO is built in from day one, and we offer ongoing technical, on-page and local SEO packages to keep improving your rankings post-launch." }
-        }
-      ]
-    }
-    </script>
-
-    <!-- GitHub Pages SPA fallback: decodes the path 404.html redirected here with,
-         and restores the real URL via replaceState before React mounts/renders,
-         so a direct visit to e.g. /services lands on the right page. -->
-    <script>
-      (function () {
-        var redirect = new URLSearchParams(window.location.search).get("redirect");
-        if (redirect) {
-          window.history.replaceState({}, "", redirect);
-        }
-      })();
+      var path = window.location.pathname + window.location.search + window.location.hash;
+      window.location.replace(
+        window.location.origin + "/?redirect=" + encodeURIComponent(path)
+      );
     </script>
   </head>
-  <body>
-    <div id="root"></div>
-
-    <!-- Real content for clients that don't execute JavaScript (some AI/answer-engine
-         crawlers, screen readers in rare fallback modes, JS-disabled browsers). Browsers
-         and crawlers that DO run JS never render this — React replaces #root's content
-         above and this block is simply skipped, per how <noscript> works. This is
-         progressive enhancement, not cloaking: the content matches what JS renders. -->
-    <noscript>
-      <main style="max-width: 720px; margin: 0 auto; padding: 40px 24px; font-family: sans-serif; line-height: 1.6; color: #140A24;">
-        <h1>BRG Digital Solutions — Transforming Ideas into Digital Success</h1>
-        <p>BRG Digital Solutions is a digital agency headquartered in New Delhi, India, building websites, mobile apps, SEO and digital marketing systems for startups, SMEs, schools, hospitals, hotels, travel companies, real estate, retail, manufacturing, professionals, NGOs and enterprises — serving clients across the USA, Australia, Europe, UAE, UK, Canada, Singapore and India.</p>
-        <h2>Services</h2>
-        <ul>
-          <li>Website Development — corporate, business, travel portals, hotel, school, hospital, restaurant, gym, real estate and ecommerce websites, and custom web applications</li>
-          <li>Mobile App Development — Android, iOS, Flutter and cross-platform apps</li>
-          <li>SEO Services — technical SEO, on-page SEO, local SEO</li>
-          <li>Digital Marketing — Google Ads, Facebook Ads, Instagram Ads, social media marketing</li>
-          <li>AI Solutions — AI chatbots, WhatsApp automation</li>
-          <li>CRM Development &amp; Integration — custom CRM builds, Zoho/HubSpot/Salesforce integration, sales pipeline automation, lead tracking</li>
-          <li>WhatsApp Marketing &amp; Messaging APIs — WhatsApp marketing campaigns, WhatsApp Business API, SMS API integration, voice/IVR APIs, multi-channel messaging</li>
-          <li>Cloud Solutions — hosting, performance and security</li>
-          <li>Website Maintenance &amp; AMC</li>
-        </ul>
-        <h2>Contact</h2>
-        <p>
-          Phone: <a href="tel:+919811419910">+91 98114 19910</a><br />
-          Email: <a href="mailto:brgdigitalsolutions@gmail.com">brgdigitalsolutions@gmail.com</a><br />
-          Address: B-158/159 Sainik Nagar, New Delhi – 110059, India
-        </p>
-        <p>Enable JavaScript for the full interactive site, including the project portfolio, quote estimator and contact form.</p>
-      </main>
-    </noscript>
-
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+  <body></body>
 </html>
