@@ -567,7 +567,7 @@ function Footer({ setPage }) {
         <span>© 2026 BRG Digital Solutions. All rights reserved.</span>
         <div className="flex gap-4">
           <button onClick={() => go("privacy")} style={{ ...bodyFont, color: "rgba(255,255,255,0.4)" }}>Privacy Policy</button>
-          <span>brgdigitalsolutions.com</span>
+          <span>brgdigitalsolutions.in</span>
         </div>
       </div>
     </footer>
@@ -1883,7 +1883,7 @@ const PAGE_META = {
 };
 const PAGE_TITLES = Object.fromEntries(Object.entries(PAGE_META).map(([k, v]) => [k, v.title]));
 const VALID_PAGES = Object.keys(PAGE_META);
-const SITE_ORIGIN = "https://brgdigitalsolutions.com";
+const SITE_ORIGIN = "https://brgdigitalsolutions.in";
 
 function getPageFromPath() {
   if (typeof window === "undefined") return "home";

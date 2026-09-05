@@ -1,6 +1,6 @@
 # BRG Digital Solutions — Website
 
-React + Vite + Tailwind CSS site for brgdigitalsolutions.com, with a Cloudflare Worker
+React + Vite + Tailwind CSS site for brgdigitalsolutions.in, with a Cloudflare Worker
 powering chat, contact, and careers. Same architecture pattern as your other projects
 (BRG CABS, One-Way Bhaarat): static frontend + Worker backend.
 
@@ -229,7 +229,7 @@ non-`/api/*` path.
 1. Push this repo to GitHub.
 2. Enable GitHub Pages, pointing at the `dist/` output (via a build workflow) or push
    `dist/` contents to a `gh-pages` branch.
-3. In Cloudflare DNS, set the `brgdigitalsolutions.com` record to **Proxied (orange cloud)**.
+3. In Cloudflare DNS, set the `brgdigitalsolutions.in` record to **Proxied (orange cloud)**.
 
 ## Deploy the API worker (Cloudflare)
 
@@ -246,7 +246,7 @@ wrangler secret put RECAPTCHA_SECRET_KEY       # optional — forms work without
 wrangler deploy
 ```
 
-Then confirm the route `brgdigitalsolutions.com/api/*` in `wrangler.toml` matches
+Then confirm the route `brgdigitalsolutions.in/api/*` in `wrangler.toml` matches
 a route in your Cloudflare zone, same as `oneway-bhaarat`'s `/api/*` routing — the
 worker name must match the route, and the DNS record must stay proxied (orange cloud),
 or requests will 404 exactly like the issue you hit on One-Way Bhaarat.
@@ -258,7 +258,7 @@ unprotected against abuse until you do.
 
 **Before forms will actually send email:**
 - Verify a sending domain in Resend and update `FROM_EMAIL` in `worker/index.js`.
-  Note this is deliberately still `notifications@brgdigitalsolutions.com`, not
+  Note this is deliberately still `notifications@brgdigitalsolutions.in`, not
   the `brgdigitalsolutions@gmail.com` address forms now deliver to
   (`NOTIFY_EMAIL`) — Resend (like any transactional email provider) requires
   you to verify DNS ownership of whatever domain you send *from*, and you
